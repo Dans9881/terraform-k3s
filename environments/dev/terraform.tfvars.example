@@ -13,7 +13,7 @@ source_ranges = ["0.0.0.0/0"] # restrict this in production
 allowed_ports = ["22", "80", "443", "6443"]
 
 # INFRA REPOSITORY
-repo_url = "https://github.com/your-username/infra-k3s.git"
+repo_url = "https://github.com/Dans9881/infra-k3s.git"
 
 # SSH CONFIGURATION
 public_key_path = "~/.ssh/id_ed25519.pub"
