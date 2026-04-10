@@ -67,7 +67,8 @@ module "master" {
 module "worker" {
   source = "../../modules/vm"
 
-  for_each = toset(["worker-1"])
+  for_each = toset(["worker1", "worker2"])
+  depends_on = [module.master]
 
   name         = "${var.vm_name}-${each.key}-${var.environment}"
   machine_type = var.machine_type

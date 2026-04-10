@@ -96,6 +96,10 @@ if [ "${node_role}" = "master" ]; then
   wait_resource "API READY" "kubectl get --raw='/readyz'"
   wait_resource "NODE READY" "kubectl get nodes --no-headers | grep -q Ready"
 
+  echo "=== TAINT MASTER NODE ==="
+  MASTER_NODE=$(hostname)
+  kubectl taint nodes $MASTER_NODE node-role.kubernetes.io/control-plane=true:NoSchedule --overwrite || true
+
   echo "=== INSTALL CILIUM CLI ==="
   CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
   curl -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/$${CILIUM_CLI_VERSION}/cilium-linux-amd64.tar.gz
