@@ -2,7 +2,7 @@
 set -euo pipefail
 
 export DEBIAN_FRONTEND=noninteractive
-LOG_FILE="/var/log/startup-script.log"
+LOG_FILE="/var/log/startup.log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 echo "=== START PROVISIONING ==="
